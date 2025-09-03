@@ -28,17 +28,16 @@ Actualmente, la gestión se apoya en herramientas descentralizadas (hojas de cá
 
 ### 1.3. Objetivos del Producto (Metas SMART)
 
-- Reducir discrepancias de inventario en un 95% en 6 meses.
-- Mejorar el ciclo de cobro en un 30% en el primer año.
-- Automatizar el 100% de la facturación recurrente basada en contratos.
-- Obtener visibilidad en tiempo real sobre la rentabilidad del 80% de los contratos activos.
-- Reducir en un 40% el tiempo administrativo dedicado a tickets y asignación de técnicos.
+- Inventario: Minimizar discrepancias de inventario asegurando que el sistema registre en tiempo real entradas, salidas, transferencias y asignaciones, con trazabilidad completa.
+- Cobranza: Agilizar el ciclo de cobro mediante control de cuentas por cobrar.
+- Rentabilidad: Brindar visibilidad inmediata de la rentabilidad de contratos y clientes, consolidando ingresos y costos asociados.
+- Servicio Técnico: Reducir tiempos administrativos en la gestión de tickets mediante un sistema integrado de asignación, seguimiento y cierre digital.
 
 ---
 
 ## 2. Resumen Ejecutivo
 
-El ERP RedPrint será un sistema modular que centraliza y automatiza operaciones críticas de renta de impresoras y venta de equipo. Integrará módulos de Inventario, Contratos, Ventas, Facturación, Servicio Técnico y Reportes, proporcionando visibilidad 360°, optimización de recursos y soporte para el crecimiento escalable del negocio.
+El ERP RedPrint será un sistema modular que centraliza y automatiza operaciones críticas de renta de impresoras y venta de equipo. Integrará módulos de Inventario, Clientes, Ventas,  Servicio Técnico y Reportes, proporcionando visibilidad integral, optimización de recursos y soporte para el crecimiento escalable del negocio.
 
 ---
 
@@ -47,7 +46,7 @@ El ERP RedPrint será un sistema modular que centraliza y automatiza operaciones
 ### 3.1. Funcionalidades Incluidas (In-Scope)
 
 - **Módulo de Inventario:** Gestión centralizada de productos, múltiples almacenes, trazabilidad y alertas.
-- **Módulo de Contratos de Renta:** Ciclo de vida completo, asignación de equipos, términos de facturación y renovaciones.
+- **Módulo de Contratos de Renta:** Ciclo de vida completo, asignación de equipos, términos de facturación (importe de la renta base) y Conteos de Consumibles, Conteos de Impresion.
 - **Módulo de Ventas:** CRM, cotizaciones, órdenes de venta, historial y conversión de cotizaciones.
 - **Módulo de Facturación:** Facturación automatizada/manual, integración con PAC, gestión de cuentas por cobrar y conciliación.
 - **Módulo de Servicio Técnico:** Tickets, asignación, registro de actividades, adjuntos y cierre con firma digital.
@@ -63,34 +62,31 @@ El ERP RedPrint será un sistema modular que centraliza y automatiza operaciones
 
 ---
 
-## 4. Stakeholders
+## 4. Roles Clave (Stakeholders de referencia)
 
-| Rol                      | Nombre   | Responsabilidad en el Proyecto                        |
-|--------------------------|----------|-------------------------------------------------------|
-| Director General         | (Nombre) | Patrocinador, aprobación final                        |
-| Gerente de Operaciones   | (Nombre) | Dueño del producto, define prioridades                |
-| Gerente de Ventas        | (Nombre) | Valida flujo de ventas y CRM                          |
-| Líder Técnico de Servicio| (Nombre) | Define requisitos de servicio técnico                 |
-| Encargado de Almacén     | (Nombre) | Valida flujo de inventario                            |
-| Administrador/Contador   | (Nombre) | Define requisitos de facturación y cobranza           |
-| Equipo de TI             | (Nombre) | Soporte técnico e implementación                      |
+- Usuario del sistema: Persona que opera el ERP para gestionar inventario, contratos, ventas, facturación y servicio técnico. Este es el rol principal en el negocio.
+- Administrador del sistema: Responsable de configuraciones, seguridad, respaldos, auditoría y mantenimiento técnico del ERP.
+
 
 ---
 
 ## 5. Historias de Usuario
 
-1. Como Gerente de Operaciones, quiero registrar un nuevo contrato de renta, asociando cliente y equipo, para automatizar seguimiento y facturación.
-2. Como Administrador, quiero que el sistema genere automáticamente las facturas mensuales de renta, para asegurar flujo de cobro constante.
-3. Como Técnico de Servicio, quiero recibir notificaciones en mi dispositivo cuando se me asigne un ticket, para reducir mi tiempo de respuesta.
-4. Como Técnico, quiero consultar el stock de una refacción y registrar su uso en un ticket, para actualizar inventario en tiempo real.
-5. Como Vendedor, quiero crear una cotización de venta con precios y disponibilidad actualizados, para enviarla rápidamente a un cliente.
-6. Como Encargado de Almacén, quiero registrar la entrada de productos con número de serie, para tener control preciso de activos.
-7. Como Gerente de Operaciones, quiero ver un dashboard con rentabilidad por contrato, para identificar clientes no rentables.
-8. Como Administrador, quiero registrar manualmente la lectura del contador de una impresora, para facturar correctamente.
-9. Como Vendedor, quiero convertir una cotización aprobada en orden de venta con un clic, para agilizar facturación y entrega.
-10. Como Administrador, quiero marcar una factura como "pagada" y registrar el método de pago, para controlar cuentas por cobrar.
-11. Como Líder Técnico, quiero ver un reporte de tickets abiertos/cerrados y tiempo promedio de solución, para evaluar desempeño.
-12. Como Director General, quiero un reporte consolidado de ingresos mensuales por línea de negocio, para visión financiera clara.
+1 (MVP) Como Usuario del sistema, quiero registrar un nuevo contrato de renta, asociando cliente y equipo, para automatizar seguimiento y facturación.
+2 (MVP) Como Usuario del sistema, quiero que el sistema genere recordatorios para realizar las facturas mensuales de renta.
+3 (Fase 2) Como Usuario del sistema, quiero recibir notificaciones cuando se me asigne o cree un ticket de servicio.
+4 (Fase 2) Como Usuario del sistema, quiero consultar el stock de una refacción y registrar su uso en un ticket.
+5 (Fase 2) Como Usuario del sistema, quiero crear una cotización de venta con precios y disponibilidad actualizados.
+6 (MVP) Como Usuario del sistema, quiero registrar la entrada de productos con número de serie.
+7 (Fase 3) Como Usuario del sistema, quiero ver un dashboard con rentabilidad por contrato.
+8 (MVP) Como Usuario del sistema, quiero registrar manualmente la lectura del contador de una impresora.
+9 (Fase 2) Como Usuario del sistema, quiero convertir una cotización aprobada en orden de venta con un clic.
+10 (MVP) Como Usuario del sistema, quiero marcar una factura como "pagada" y registrar el método de pago.
+11 (Fase 2) Como Usuario del sistema, quiero ver un reporte de tickets abiertos/cerrados y tiempo promedio de solución.
+12 (Fase 3) Como Usuario del sistema, quiero un reporte consolidado de ingresos mensuales por línea de negocio.
+13 (MVP) Como Administrador del sistema, quiero configurar respaldos automáticos de la base de datos.
+14 (MVP) Como Administrador del sistema, quiero administrar usuarios y roles de acceso.
+15 (Fase 2) Como Administrador del sistema, quiero consultar logs de auditoría para revisar cambios importantes.
 
 ---
 
@@ -197,57 +193,13 @@ El ERP RedPrint será un sistema modular que centraliza y automatiza operaciones
 
 ## 9. Requerimientos Técnicos
 
-- **Backend:** Node.js (NestJS/Express) o Python (Django).
-- **Frontend:** React (Next.js) o Vue.js (Nuxt.js).
-- **Base de Datos:** PostgreSQL (transaccional), posible uso de MongoDB para reportes.
-- **Infraestructura Cloud:** AWS o Google Cloud Platform (EC2, RDS, S3/Cloud Storage).
-- **APIs:** RESTful internas, integración obligatoria con PAC para timbrado CFDI, API para monitoreo de impresoras (futuro).
+- **Backend:** Laravel (PHP).
+- **Frontend:** Nuxt.js (Vue.js).
+- **Base de Datos:** PostgreSQL (transaccional).
+- **Infraestructura :** Local (servidor propio de la empresa).
+- **APIs:** RESTful internas.
 - **Autenticación:** OAuth 2.0/JWT, soporte para 2FA.
 
----
-
-## 10. Plan de Implementación
-
-### Fase 1: MVP - Núcleo Operativo (3-4 meses)
-
-- Módulos: Inventario, Contratos de Renta, Facturación básica.
-- Migración inicial de datos maestros desde hojas de cálculo.
-
-### Fase 2: Expansión Comercial y de Servicio (2-3 meses)
-
-- Módulos: Venta Directa (CRM, Cotizaciones), Servicio Técnico (Tickets).
-- Capacitación intensiva para ventas y técnicos.
-
-### Fase 3: Inteligencia de Negocio y Automatización (2 meses)
-
-- Módulos: Reportes avanzados, Dashboard de KPIs, automatización completa de facturación.
-- Capacitación a gerencia y dirección.
-
----
-
-## 11. Migración de Datos y Capacitación
-
-- Importar clientes, productos, contratos activos y stock inicial desde hojas de cálculo.
-- Limpieza y normalización de datos.
-- Pruebas de integridad tras la migración.
-- Capacitación por rol (ventas, almacén, técnicos, administrativos).
-- Manuales de usuario digitales y soporte post-implementación.
-
----
-
-## 12. Anexos
-
-- **Glosario:** Definición de términos clave (SKU, KPI, SLA, Contrato Activo, etc.).
-- **Diagramas:** BPMN de procesos, arquitectura del sistema.
-- **Wireframes:** Pantallas clave (Dashboard, Contratos, Tickets).
-- **Exportaciones:** Plantillas para migración de datos.
-
----
-
-**Nota:** Este documento es vivo y se actualizará según feedback de stakeholders.
-
-**Aprobado por:**  
-[Nombre del Dueño/Gerente]  
-[Fecha de aprobación]
+ 
 
 ---
