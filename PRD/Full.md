@@ -1,6 +1,6 @@
 # Documento de Requisitos del Producto (PRD) - ERP RedPrint
 
-**Versión:** 1.0  
+**Versión:** 2.0  
 **Fecha:** 07 de agosto de 2024  
 **Autor:** Product Manager / Analista de Negocios  
 **Estado:** Borrador para Revisión
@@ -48,7 +48,6 @@ El ERP RedPrint será un sistema modular que centraliza y automatiza operaciones
 - **Módulo de Inventario:** Gestión centralizada de productos, múltiples almacenes, trazabilidad y alertas.
 - **Módulo de Contratos de Renta:** Ciclo de vida completo, asignación de equipos, términos de facturación (importe de la renta base) y Conteos de Consumibles, Conteos de Impresion.
 - **Módulo de Ventas:** CRM, cotizaciones, órdenes de venta, historial y conversión de cotizaciones.
-- **Módulo de Facturación:** Facturación automatizada/manual, integración con PAC, gestión de cuentas por cobrar y conciliación.
 - **Módulo de Servicio Técnico:** Tickets, asignación, registro de actividades, adjuntos y cierre con firma digital.
 - **Módulo de Reportes y Dashboard:** KPIs, rentabilidad, inventario, ventas y cuentas por cobrar.
 
@@ -64,7 +63,7 @@ El ERP RedPrint será un sistema modular que centraliza y automatiza operaciones
 
 ## 4. Roles Clave (Stakeholders de referencia)
 
-- Usuario del sistema: Persona que opera el ERP para gestionar inventario, contratos, ventas, facturación y servicio técnico. Este es el rol principal en el negocio.
+- Usuario del sistema: Persona que opera el ERP para gestionar inventario, contratos, ventas, servicio técnico.
 - Administrador del sistema: Responsable de configuraciones, seguridad, respaldos, auditoría y mantenimiento técnico del ERP.
 
 
@@ -72,22 +71,25 @@ El ERP RedPrint será un sistema modular que centraliza y automatiza operaciones
 
 ## 5. Historias de Usuario
 
-1 (MVP) Como Usuario del sistema, quiero registrar un nuevo contrato de renta, asociando cliente y equipo, para automatizar seguimiento y facturación.
-2 (MVP) Como Usuario del sistema, quiero que el sistema genere recordatorios para realizar las facturas mensuales de renta.
-3 (Fase 2) Como Usuario del sistema, quiero recibir notificaciones cuando se me asigne o cree un ticket de servicio.
-4 (Fase 2) Como Usuario del sistema, quiero consultar el stock de una refacción y registrar su uso en un ticket.
-5 (Fase 2) Como Usuario del sistema, quiero crear una cotización de venta con precios y disponibilidad actualizados.
-6 (MVP) Como Usuario del sistema, quiero registrar la entrada de productos con número de serie.
-7 (Fase 3) Como Usuario del sistema, quiero ver un dashboard con rentabilidad por contrato.
-8 (MVP) Como Usuario del sistema, quiero registrar manualmente la lectura del contador de una impresora.
-9 (Fase 2) Como Usuario del sistema, quiero convertir una cotización aprobada en orden de venta con un clic.
-10 (MVP) Como Usuario del sistema, quiero marcar una factura como "pagada" y registrar el método de pago.
-11 (Fase 2) Como Usuario del sistema, quiero ver un reporte de tickets abiertos/cerrados y tiempo promedio de solución.
-12 (Fase 3) Como Usuario del sistema, quiero un reporte consolidado de ingresos mensuales por línea de negocio.
-13 (MVP) Como Administrador del sistema, quiero configurar respaldos automáticos de la base de datos.
-14 (MVP) Como Administrador del sistema, quiero administrar usuarios y roles de acceso.
-15 (Fase 2) Como Administrador del sistema, quiero consultar logs de auditoría para revisar cambios importantes.
+###5.1. Historias de Usuario del Sistema
 
+(MVP) Como Usuario, quiero registrar un nuevo contrato de renta, asociando cliente y equipo.
+(MVP) Como Usuario, quiero que el sistema genere automáticamente las facturas mensuales de renta.
+(Fase 2) Como Usuario, quiero consultar el stock de una refacción y registrar su uso en un ticket.
+(Fase 2) Como Usuario, quiero crear una cotización de venta con precios y disponibilidad actualizados.
+(MVP) Como Usuario, quiero registrar la entrada de productos con número de serie.
+(Fase 3) Como Usuario, quiero ver un dashboard con rentabilidad por contrato.
+(MVP) Como Usuario, quiero registrar manualmente la lectura del contador de una impresora.
+(Fase 2) Como Usuario, quiero convertir una cotización aprobada en orden de venta con un clic.
+(MVP) Como Usuario, quiero marcar una factura como "pagada" y registrar el método de pago.
+(Fase 2) Como Usuario, quiero ver un reporte de tickets abiertos/cerrados y tiempo promedio de solución.
+(Fase 3) Como Usuario, quiero un reporte consolidado de ingresos mensuales por línea de negocio.
+
+###5.2. Historias del Administrador del Sistema
+
+(MVP) Como Administrador, quiero configurar respaldos automáticos de la base de datos.
+(MVP) Como Administrador, quiero administrar usuarios y roles de acceso.
+(Fase 2) Como Administrador, quiero consultar logs de auditoría para revisar cambios importantes.
 ---
 
 ## 6. Requerimientos Funcionales
