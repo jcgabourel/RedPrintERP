@@ -70,6 +70,7 @@ El ERP RedPrint será un sistema modular que centraliza y automatiza operaciones
 ### 5.1. Módulo de Inventario
 
 - Creación de productos con SKU, número de serie, descripción, costo, precio y stock mínimo.
+- gestion de catalogos: categorias, marcas, unidades de almacen, etc.
 - Clasificación: equipo para renta, venta, refacciones, consumibles.
 - Gestión de múltiples almacenes (central, vehículos técnicos).
 - Trazabilidad de movimientos (entradas, salidas, transferencias).
@@ -78,28 +79,27 @@ El ERP RedPrint será un sistema modular que centraliza y automatiza operaciones
 
 ### 5.2. Módulo de Contratos de Renta
 
-- Creación de contratos con datos del cliente, fechas, equipos asignados.
-- Definición de términos de facturación: renta base, páginas incluidas, costo por excedente.
-- Registro de lecturas de contadores (manual o integración futura).
-- Historial de servicios y consumibles asociados.
-- Notificaciones automáticas para renovaciones o vencimientos.
+- Creación y Gestión: Registro de contratos con cliente, fechas, equipos asignados (que se marcan como "en renta" en inventario).
+- Términos de Facturación: Configuración de renta base, páginas incluidas y costo por página excedente.
+- Registro de Lecturas: Captura manual mensual de lecturas de contador para cálculo de facturación.
+- Historial de Servicio: Visualización de todos los tickets de servicio técnico asociados al contrato.
+- Alertas Automáticas: Notificaciones para renovaciones, vencimientos y recordatorios de captura de lecturas.
 
-### 5.3. Módulo de Ventas
+### 5.3. Clientes
 
-- CRM: base de datos de clientes.
-- Generación de cotizaciones en PDF con logo.
-- Conversión de cotización a orden de venta.
-- Historial de ventas por cliente.
-- Integración con métodos de pago.
+- Catálogo de Clientes: Registro básico de información fiscal y de contacto (razón social, RFC, dirección, teléfono, email).
+- Vista consolidada: Acceso rápido desde la ficha del cliente a:
+  - Historial de facturas emitidas
+  - Estado de cuentas por cobrar
+  - Contratos de renta activos e históricos
+  - Reportes de consumo y pagos
 
-### 5.4. Módulo de Facturación
+### 5.4. Módulo de Ventas
 
-- Generación de facturas a partir de contratos (automática) y ventas (manual).
-- Integración con PAC para timbrado CFDI 4.0.
-- Envío de facturas por correo electrónico.
-- Gestión de estatus: Borrador, Timbrada, Enviada, Pagada, Cancelada.
-- Reporte de antigüedad de saldos.
-- Conciliación bancaria básica.
+- Creacion de registros de venta.
+- Gestion de Cuentas por cobrar
+- Gestion de facturas asociadas a la venta
+- Conciliacion Bancaria
 
 ### 5.5. Módulo de Servicio Técnico
 
