@@ -53,7 +53,6 @@ El ERP RedPrint será un sistema modular que centraliza y automatiza operaciones
 
 ### 3.2. Funcionalidades Excluidas (Out-of-Scope para MVP)
 
-- Módulo de contabilidad completo (solo integración futura).
 - Recursos Humanos y nómina.
 - Portal de autogestión para clientes (fase futura).
 - Integración con e-commerce.
@@ -66,35 +65,9 @@ El ERP RedPrint será un sistema modular que centraliza y automatiza operaciones
 - Usuario del sistema: Persona que opera el ERP para gestionar inventario, contratos, ventas, servicio técnico.
 - Administrador del sistema: Responsable de configuraciones, seguridad, respaldos, auditoría y mantenimiento técnico del ERP.
 
+## 5. Requerimientos Funcionales
 
----
-
-## 5. Historias de Usuario
-
-###5.1. Historias de Usuario del Sistema
-
-(MVP) Como Usuario, quiero registrar un nuevo contrato de renta, asociando cliente y equipo.
-(MVP) Como Usuario, quiero que el sistema genere automáticamente las facturas mensuales de renta.
-(Fase 2) Como Usuario, quiero consultar el stock de una refacción y registrar su uso en un ticket.
-(Fase 2) Como Usuario, quiero crear una cotización de venta con precios y disponibilidad actualizados.
-(MVP) Como Usuario, quiero registrar la entrada de productos con número de serie.
-(Fase 3) Como Usuario, quiero ver un dashboard con rentabilidad por contrato.
-(MVP) Como Usuario, quiero registrar manualmente la lectura del contador de una impresora.
-(Fase 2) Como Usuario, quiero convertir una cotización aprobada en orden de venta con un clic.
-(MVP) Como Usuario, quiero marcar una factura como "pagada" y registrar el método de pago.
-(Fase 2) Como Usuario, quiero ver un reporte de tickets abiertos/cerrados y tiempo promedio de solución.
-(Fase 3) Como Usuario, quiero un reporte consolidado de ingresos mensuales por línea de negocio.
-
-###5.2. Historias del Administrador del Sistema
-
-(MVP) Como Administrador, quiero configurar respaldos automáticos de la base de datos.
-(MVP) Como Administrador, quiero administrar usuarios y roles de acceso.
-(Fase 2) Como Administrador, quiero consultar logs de auditoría para revisar cambios importantes.
----
-
-## 6. Requerimientos Funcionales
-
-### 6.1. Módulo de Inventario
+### 5.1. Módulo de Inventario
 
 - Creación de productos con SKU, número de serie, descripción, costo, precio y stock mínimo.
 - Clasificación: equipo para renta, venta, refacciones, consumibles.
@@ -103,7 +76,7 @@ El ERP RedPrint será un sistema modular que centraliza y automatiza operaciones
 - Asignación de equipos a contratos de renta.
 - Alertas automáticas por stock bajo.
 
-### 6.2. Módulo de Contratos de Renta
+### 5.2. Módulo de Contratos de Renta
 
 - Creación de contratos con datos del cliente, fechas, equipos asignados.
 - Definición de términos de facturación: renta base, páginas incluidas, costo por excedente.
@@ -111,15 +84,15 @@ El ERP RedPrint será un sistema modular que centraliza y automatiza operaciones
 - Historial de servicios y consumibles asociados.
 - Notificaciones automáticas para renovaciones o vencimientos.
 
-### 6.3. Módulo de Ventas
+### 5.3. Módulo de Ventas
 
-- CRM: base de datos de clientes y prospectos.
+- CRM: base de datos de clientes.
 - Generación de cotizaciones en PDF con logo.
 - Conversión de cotización a orden de venta.
 - Historial de ventas por cliente.
 - Integración con métodos de pago.
 
-### 6.4. Módulo de Facturación
+### 5.4. Módulo de Facturación
 
 - Generación de facturas a partir de contratos (automática) y ventas (manual).
 - Integración con PAC para timbrado CFDI 4.0.
@@ -128,7 +101,7 @@ El ERP RedPrint será un sistema modular que centraliza y automatiza operaciones
 - Reporte de antigüedad de saldos.
 - Conciliación bancaria básica.
 
-### 6.5. Módulo de Servicio Técnico
+### 5.5. Módulo de Servicio Técnico
 
 - Creación de tickets asociados a cliente y/o contrato.
 - Asignación de tickets a técnicos disponibles.
@@ -137,7 +110,7 @@ El ERP RedPrint será un sistema modular que centraliza y automatiza operaciones
 - Cierre de ticket con firma digital del cliente.
 - Programación de mantenimientos preventivos.
 
-### 6.6. Módulo de Reportes y Dashboard
+### 5.6. Módulo de Reportes y Dashboard
 
 - Dashboard principal con KPIs: ingresos, cuentas por cobrar, tickets abiertos, nivel de inventario.
 - Reporte de rentabilidad por contrato y cliente.
@@ -147,7 +120,7 @@ El ERP RedPrint será un sistema modular que centraliza y automatiza operaciones
 
 ---
 
-## 7. Requerimientos No Funcionales
+## 6. Requerimientos No Funcionales
 
 - **Rendimiento:** Tiempo de carga de páginas < 2 segundos; reportes complejos < 10 segundos; soporte para 100 usuarios concurrentes.
 - **Seguridad:** Autenticación basada en roles (RBAC), 2FA para admins, cifrado de datos sensibles (AES-256/TLS), logs de auditoría.
@@ -158,9 +131,9 @@ El ERP RedPrint será un sistema modular que centraliza y automatiza operaciones
 
 ---
 
-## 8. Flujos de Usuario
+## 7. Flujos de Usuario
 
-### 8.1. Ciclo de Vida del Contrato de Renta
+### 7.1. Ciclo de Vida del Contrato de Renta
 
 1. Vendedor/Operaciones crea contrato, selecciona cliente y equipo.
 2. Sistema marca equipo como "Asignado" y descuenta del stock.
@@ -171,7 +144,7 @@ El ERP RedPrint será un sistema modular que centraliza y automatiza operaciones
 7. Si hay problema, se crea ticket de servicio técnico.
 8. Al final del periodo: decisión de renovar o terminar contrato.
 
-### 8.2. Proceso de Venta Directa
+### 7.2. Proceso de Venta Directa
 
 1. Vendedor crea cotización, agrega productos del inventario.
 2. Sistema verifica disponibilidad en tiempo real.
@@ -181,7 +154,7 @@ El ERP RedPrint será un sistema modular que centraliza y automatiza operaciones
 6. Administrador genera factura.
 7. Almacén prepara pedido y descuenta stock.
 
-### 8.3. Atención de Ticket de Servicio Técnico
+### 7.3. Atención de Ticket de Servicio Técnico
 
 1. Cliente/Operaciones reporta falla y se crea ticket.
 2. Líder Técnico asigna ticket a técnico disponible.
@@ -193,7 +166,7 @@ El ERP RedPrint será un sistema modular que centraliza y automatiza operaciones
 
 ---
 
-## 9. Requerimientos Técnicos
+## 8. Requerimientos Técnicos
 
 - **Backend:** Laravel (PHP).
 - **Frontend:** Nuxt.js (Vue.js).
