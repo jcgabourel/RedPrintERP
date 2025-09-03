@@ -99,20 +99,25 @@ El ERP RedPrint será un sistema modular que centraliza y automatiza operaciones
 
 ### 5.4. Módulo de Ventas
 
-- Creación de cotizaciones con productos del inventario y generación de PDF.
-- Conversión de cotizaciones a órdenes de venta.
-- Gestión de estatus de ventas (Borrador, Confirmada, Entregada, Facturada).
-- Descuento automático de inventario al confirmar la entrega.
-- Generación automática de registro en Cuentas por Cobrar al facturar una venta al crédito.
+- Cotizaciones (Opcional): Creación ágil de cotizaciones en PDF. Pueden convertirse en ventas con un clic.
+- Registro ágil de ventas: Captura directa de ventas (cliente, productos, precios) sin necesidad de cotización previa.
+- Gestión de estatus: Control de ventas (Borrador, Confirmada, Entregada, Facturada).
+- Impacto en inventario:
+  - Actualización automática al marcar como "Entregada".
+  - Opción de vincular a una entrada de inventario manual previa.
+- Importación de XML: Carga de facturas XML para asociar a ventas
+- Registrar cuentas por cobrar.
 
 ### 5.5. Módulo de Compras y Proveedores
 
-- Catálogo de Proveedores: Registro de datos fiscales y de contacto (razón social, RFC, dirección, teléfono, email).
-- Registro de Compras: Captura ágil de compras realizadas (proveedor, productos, cantidades, costos), con estatus:
-  - Pendiente: Productos ordenados pero no recibidos.
-  - Recibida: Productos en almacén (actualiza inventario al confirmar).
-- Importación de Facturas (XML): Carga de facturas XML para captura automática de datos y asociación a compras registradas.
-- Cuentas por Pagar: Registro automático de obligaciones al importar facturas, con seguimiento de estatus (Pendiente, Pagada).
+- Catálogo de proveedores: Registro de datos fiscales y de contacto.
+- Registro ágil de compras: Captura directa de compras (proveedor, productos, costos).
+- Gestión de estatus: Control de compras (Pendiente, Recibida, Facturada).
+- Impacto en inventario:
+  - Actualización automática al marcar como "Recibida".
+  - Opción de vincular a una entrada de inventario manual previa.
+- Importación de XML: Carga de facturas XML para asociar a compras
+- Registrar cuentas por pagar.
 
 ### 5.6. Módulo de Servicio Técnico
 
@@ -128,6 +133,9 @@ El ERP RedPrint será un sistema modular que centraliza y automatiza operaciones
 - Cuentas por Cobrar: Gestión centralizada de saldos pendientes de clientes (originados en Rentas y Ventas). Registro de pagos y aplicación a saldos.
 - Cuentas por Pagar: Registro y seguimiento de facturas pendientes de pago a proveedores (originadas en Compras).
 - Conciliación Bancaria: Registro de movimientos bancarios y conciliación con facturas emitidas/pagadas.
+- Importación de XML:
+  - Facturas de compra (proveedores)
+  - Facturas emitidas (ventas/rentas)
 - Reportes Financieros: Estado de cuentas, flujo de caja, reporte de antigüedad de saldos.
 
 5.8. Módulo de Reportes y Dashboard
