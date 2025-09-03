@@ -70,47 +70,67 @@ El ERP RedPrint será un sistema modular que centraliza y automatiza operaciones
 ### 5.1. Módulo de Inventario
 
 - Creación de productos con SKU, número de serie, descripción, costo, precio y stock mínimo.
-- gestion de catalogos: categorias, marcas, unidades de almacen, etc.
+- Gestión de catálogos: categorías, marcas, unidades de almacén.
 - Clasificación: equipo para renta, venta, refacciones, consumibles.
 - Gestión de múltiples almacenes (central, vehículos técnicos).
-- Trazabilidad de movimientos (entradas, salidas, transferencias).
-- Asignación de equipos a contratos de renta.
+- Trazabilidad de movimientos (entradas, salidas, transferencias, ajustes).
+- Asignación de equipos a contratos de renta (cambia estado a "En Renta").
 - Alertas automáticas por stock bajo.
 
-### 5.2. Módulo de Contratos de Renta
+### 5.2. Módulo de Clientes
 
-- Creación y Gestión: Registro de contratos con cliente, fechas, equipos asignados (que se marcan como "en renta" en inventario).
-- Términos de Facturación: Configuración de renta base, páginas incluidas y costo por página excedente.
-- Registro de Lecturas: Captura manual mensual de lecturas de contador para cálculo de facturación.
-- Historial de Servicio: Visualización de todos los tickets de servicio técnico asociados al contrato.
-- Alertas Automáticas: Notificaciones para renovaciones, vencimientos y recordatorios de captura de lecturas.
-
-### 5.3. Clientes
-
-- Catálogo de Clientes: Registro básico de información fiscal y de contacto (razón social, RFC, dirección, teléfono, email).
-- Vista consolidada: Acceso rápido desde la ficha del cliente a:
+- Catálogo de Clientes: Registro de información fiscal y de contacto (razón social, RFC, dirección, teléfono, email).
+- Vista consolidada: Acceso desde la ficha del cliente a:
   - Historial de facturas emitidas
   - Estado de cuentas por cobrar
   - Contratos de renta activos e históricos
-  - Reportes de consumo y pagos
+  - Órdenes de venta directa
+  - Tickets de servicio técnico
+- Búsqueda y filtros por nombre, RFC o estado.
+
+### 5.3. Módulo de Rentas
+
+- Creación y gestión de contratos con cliente, fechas, equipos asignados.
+- Términos de facturación: renta base, páginas incluidas, costo por página excedente.
+- Registro manual mensual de lecturas de contador para cálculo de consumo.
+- Historial de servicios técnicos asociados al contrato.
+- Alertas automáticas para renovaciones, vencimientos y recordatorios de lecturas.
+- Generación automática de registro en Cuentas por Cobrar al facturar.
 
 ### 5.4. Módulo de Ventas
 
-- Creacion de registros de venta.
-- Gestion de Cuentas por cobrar
-- Gestion de facturas asociadas a la venta
-- Conciliacion Bancaria
+- Creación de cotizaciones con productos del inventario y generación de PDF.
+- Conversión de cotizaciones a órdenes de venta.
+- Gestión de estatus de ventas (Borrador, Confirmada, Entregada, Facturada).
+- Descuento automático de inventario al confirmar la entrega.
+- Generación automática de registro en Cuentas por Cobrar al facturar una venta al crédito.
 
-### 5.5. Módulo de Servicio Técnico
+### 5.5. Módulo de Compras y Proveedores
+
+- Catálogo de Proveedores: Registro de datos fiscales y de contacto (razón social, RFC, dirección, teléfono, email).
+- Registro de Compras: Captura ágil de compras realizadas (proveedor, productos, cantidades, costos), con estatus:
+  - Pendiente: Productos ordenados pero no recibidos.
+  - Recibida: Productos en almacén (actualiza inventario al confirmar).
+- Importación de Facturas (XML): Carga de facturas XML para captura automática de datos y asociación a compras registradas.
+- Cuentas por Pagar: Registro automático de obligaciones al importar facturas, con seguimiento de estatus (Pendiente, Pagada).
+
+### 5.6. Módulo de Servicio Técnico
 
 - Creación de tickets asociados a cliente y/o contrato.
 - Asignación de tickets a técnicos disponibles.
-- Registro de actividades: diagnóstico, acciones, tiempo invertido.
+- Registro de actividades: diagnóstico, acciones, tiempo invertido, refacciones utilizadas.
 - Adjuntar fotos o documentos al ticket.
 - Cierre de ticket con firma digital del cliente.
 - Programación de mantenimientos preventivos.
 
-### 5.6. Módulo de Reportes y Dashboard
+5.7. Módulo de Contabilidad
+
+- Cuentas por Cobrar: Gestión centralizada de saldos pendientes de clientes (originados en Rentas y Ventas). Registro de pagos y aplicación a saldos.
+- Cuentas por Pagar: Registro y seguimiento de facturas pendientes de pago a proveedores (originadas en Compras).
+- Conciliación Bancaria: Registro de movimientos bancarios y conciliación con facturas emitidas/pagadas.
+- Reportes Financieros: Estado de cuentas, flujo de caja, reporte de antigüedad de saldos.
+
+5.8. Módulo de Reportes y Dashboard
 
 - Dashboard principal con KPIs: ingresos, cuentas por cobrar, tickets abiertos, nivel de inventario.
 - Reporte de rentabilidad por contrato y cliente.
