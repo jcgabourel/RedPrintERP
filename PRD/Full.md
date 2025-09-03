@@ -128,7 +128,7 @@ El ERP RedPrint será un sistema modular que centraliza y automatiza operaciones
 - Cierre de ticket con firma digital del cliente.
 - Programación de mantenimientos preventivos.
 
-5.7. Módulo de Contabilidad
+### 5.7. Módulo de Contabilidad
 
 - Cuentas por Cobrar: Gestión centralizada de saldos pendientes de clientes (originados en Rentas y Ventas). Registro de pagos y aplicación a saldos.
 - Cuentas por Pagar: Registro y seguimiento de facturas pendientes de pago a proveedores (originadas en Compras).
@@ -138,7 +138,7 @@ El ERP RedPrint será un sistema modular que centraliza y automatiza operaciones
   - Facturas emitidas (ventas/rentas)
 - Reportes Financieros: Estado de cuentas, flujo de caja, reporte de antigüedad de saldos.
 
-5.8. Módulo de Reportes y Dashboard
+### 5.8. Módulo de Reportes y Dashboard
 
 - Dashboard principal con KPIs: ingresos, cuentas por cobrar, tickets abiertos, nivel de inventario.
 - Reporte de rentabilidad por contrato y cliente.
