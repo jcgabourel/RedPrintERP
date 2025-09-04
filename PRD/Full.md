@@ -46,9 +46,13 @@ El ERP RedPrint será un sistema modular que centraliza y automatiza operaciones
 ### 3.1. Funcionalidades Incluidas (In-Scope)
 
 - **Módulo de Inventario:** Gestión centralizada de productos, múltiples almacenes, trazabilidad y alertas.
-- **Módulo de Contratos de Renta:** Ciclo de vida completo, asignación de equipos, términos de facturación (importe de la renta base) y Conteos de Consumibles, Conteos de Impresion.
-- **Módulo de Ventas:** CRM, cotizaciones, órdenes de venta, historial y conversión de cotizaciones.
-- **Módulo de Servicio Técnico:** Tickets, asignación, registro de actividades, adjuntos y cierre con firma digital.
+- **Módulo de Clientes:** Catálogo central de clientes con vista unificada de su historial comercial (contratos, ventas, facturas, tickets).
+- **Módulo de Rentas:** Gestión del ciclo de vida completo de contratos de renta, incluyendo asignación de equipos, términos de facturación, registro de lecturas y renovaciones.
+           
+- **Módulo de Ventas:** Proceso ágil de ventas directas y cotizaciones, con gestión de estatus e impacto automático en inventario.
+- **Módulo de Compras y Proveedores:** Registro ágil de compras, gestión de proveedores y control de inventario mediante recepción de mercancía e importación de facturas XML.
+- **Módulo de Servicio Técnico:** Registro de actividades, incidencias, control de insumos y calendario servicios.
+- **Módulo de Contabilidad:** Gestión centralizada de cuentas por cobrar y por pagar, conciliación bancaria e importación de facturas XML para compras y ventas.
 - **Módulo de Reportes y Dashboard:** KPIs, rentabilidad, inventario, ventas y cuentas por cobrar.
 
 ### 3.2. Funcionalidades Excluidas (Out-of-Scope para MVP)
