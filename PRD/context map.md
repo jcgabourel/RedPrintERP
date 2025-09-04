@@ -200,15 +200,27 @@
 
 ### 3.2 Eventos de Dominio
 - Eventos clave que cruzan contextos:
-  - VentaRealizadaEvent
-  - ContratoActivadoEvent
-  - TicketCerradoEvent
-  - InventarioActualizadoEvent
-  - PagoRegistradoEvent
-  - CompraRegistradaEvent
-  - FacturaEmitidaEvent
-  - FacturaRecibidaEvent
-  - ConciliacionCompletaEvent
+  - **Eventos de Negocio:**
+    - VentaRealizadaEvent (Ventas → Gestión Financiera + Inventario)
+    - ContratoActivadoEvent (Contratos → Gestión Financiera + Inventario)
+    - CompraRegistradaEvent (Compras → Gestión Financiera + Inventario)
+    - TicketCerradoEvent (Servicio Técnico → Inventario + Gestión Financiera)
+  
+  - **Eventos de Inventario:**
+    - InventarioActualizadoEvent (Inventario → Todos los contextos)
+    - StockBajoEvent (Inventario → Ventas/Compras)
+  
+  - **Eventos Financieros:**
+    - PagoRegistradoEvent (Gestión Financiera → Todos los contextos)
+    - FacturaEmitidaEvent (Gestión Financiera → Ventas/Contratos)
+    - FacturaRecibidaEvent (Gestión Financiera → Compras)
+    - ConciliacionIniciadaEvent (Gestión Financiera → Todos)
+    - ConciliacionItemMatchedEvent (Gestión Financiera → Reportes)
+    - ConciliacionCompletaEvent (Gestión Financiera → Reportes + Todos)
+  
+  - **Eventos de Reportes:**
+    - ReporteGeneradoEvent (Reportes → Todos)
+    - DashboardActualizadoEvent (Reportes → UI)
 
 ## 4. Integraciones Técnicas
 

@@ -1,5 +1,17 @@
 
-Table customers {
+// ==============================================
+// ERP REDPRINT - DIAGRAMA DE BASE DE DATOS (DBML)
+// ==============================================
+// Este archivo define la estructura completa de la base de datos
+// Compatible con dbdiagram.io y herramientas DBML
+// Organizado por contextos/bounded contexts del sistema
+
+// ============================
+// CONTEXTO: GESTIÓN DE CLIENTES
+// ============================
+
+Table customer_customers {
+  // Catálogo principal de clientes
   id int [pk, increment]
   name varchar
   rfc varchar
@@ -10,7 +22,12 @@ Table customers {
   updated_at datetime
 }
 
-Table suppliers {
+// ================================
+// CONTEXTO: GESTIÓN DE PROVEEDORES
+// ================================
+
+Table purchase_suppliers {
+  // Catálogo de proveedores para compras
   id int [pk, increment]
   name varchar
   rfc varchar
@@ -21,22 +38,32 @@ Table suppliers {
   updated_at datetime
 }
 
-Table categories {
+// ===========================
+// CONTEXTO: GESTIÓN DE INVENTARIO
+// ===========================
+
+// Catálogos de inventario
+Table inventory_categories {
+  // Categorías de productos (equipo, refacciones, consumibles)
   id int [pk, increment]
   name varchar
 }
 
-Table brands {
+Table inventory_brands {
+  // Marcas de productos
   id int [pk, increment]
   name varchar
 }
 
-Table units {
+Table inventory_units {
+  // Unidades de medida para inventario
   id int [pk, increment]
   name varchar
 }
 
-Table products {
+Table inventory_products {
+  // Productos principales - equipo, refacciones, consumibles
+  // Clasificación: renta, venta, refacción, consumible
   id int [pk, increment]
   sku varchar
   serial_number varchar
@@ -44,14 +71,15 @@ Table products {
   cost decimal
   price decimal
   min_stock int
-  category_id int [ref: > categories.id]
-  brand_id int [ref: > brands.id]
-  unit_id int [ref: > units.id]
+  category_id int [ref: > inventory_categories.id]
+  brand_id int [ref: > inventory_brands.id]
+  unit_id int [ref: > inventory_units.id]
   created_at datetime
   updated_at datetime
 }
 
-Table warehouses {
+Table inventory_warehouses {
+  // Almacenes físicos (central, vehículos técnicos, etc.)
   id int [pk, increment]
   name varchar
   location varchar
@@ -59,9 +87,14 @@ Table warehouses {
   created_at datetime
 }
 
-Table contracts {
+// =============================
+// CONTEXTO: GESTIÓN DE CONTRATOS
+// =============================
+
+Table contract_contracts {
+  // Contratos de renta de equipos con términos de facturación
   id int [pk, increment]
-  customer_id int [ref: > customers.id]
+  customer_id int [ref: > customer_customers.id]
   start_date date
   end_date date
   billing_period varchar
@@ -74,24 +107,31 @@ Table contracts {
 }
 
 Table contract_equipments {
+  // Equipos asignados a contratos de renta
   id int [pk, increment]
-  contract_id int [ref: > contracts.id]
-  product_id int [ref: > products.id]
+  contract_id int [ref: > contract_contracts.id]
+  product_id int [ref: > inventory_products.id]
   created_at datetime
 }
 
-Table meter_readings {
+Table contract_meter_readings {
+  // Registro mensual de lecturas de contador para contratos
   id int [pk, increment]
-  contract_id int [ref: > contracts.id]
+  contract_id int [ref: > contract_contracts.id]
   reading_date date
   reading_value int
   period varchar
   created_at datetime
 }
 
-Table quotations {
+// ========================
+// CONTEXTO: GESTIÓN DE VENTAS
+// ========================
+
+Table sales_quotations {
+  // Cotizaciones que pueden convertirse en ventas
   id int [pk, increment]
-  customer_id int [ref: > customers.id]
+  customer_id int [ref: > customer_customers.id]
   date date
   total decimal
   status varchar
@@ -100,9 +140,10 @@ Table quotations {
   updated_at datetime
 }
 
-Table sales {
+Table sales_sales {
+  // Ventas directas de productos
   id int [pk, increment]
-  customer_id int [ref: > customers.id]
+  customer_id int [ref: > customer_customers.id]
   date date
   total decimal
   status varchar
@@ -110,18 +151,24 @@ Table sales {
   updated_at datetime
 }
 
-Table sale_items {
+Table sales_items {
+  // Líneas de detalle de ventas
   id int [pk, increment]
-  sale_id int [ref: > sales.id]
-  product_id int [ref: > products.id]
+  sale_id int [ref: > sales_sales.id]
+  product_id int [ref: > inventory_products.id]
   quantity int
   price decimal
   created_at datetime
 }
 
-Table purchases {
+// =========================
+// CONTEXTO: GESTIÓN DE COMPRAS
+// =========================
+
+Table purchase_purchases {
+  // Compras a proveedores
   id int [pk, increment]
-  supplier_id int [ref: > suppliers.id]
+  supplier_id int [ref: > purchase_suppliers.id]
   date date
   total decimal
   status varchar
@@ -130,18 +177,24 @@ Table purchases {
 }
 
 Table purchase_items {
+  // Líneas de detalle de compras
   id int [pk, increment]
-  purchase_id int [ref: > purchases.id]
-  product_id int [ref: > products.id]
+  purchase_id int [ref: > purchase_purchases.id]
+  product_id int [ref: > inventory_products.id]
   quantity int
   cost decimal
   created_at datetime
 }
 
-Table tickets {
+// =================================
+// CONTEXTO: SERVICIO TÉCNICO
+// =================================
+
+Table technical_tickets {
+  // Tickets de servicio técnico para mantenimiento y reparaciones
   id int [pk, increment]
-  customer_id int [ref: > customers.id]
-  contract_id int [ref: > contracts.id]
+  customer_id int [ref: > customer_customers.id]
+  contract_id int [ref: > contract_contracts.id]
   creation_date date
   close_date date
   status varchar
@@ -153,26 +206,30 @@ Table tickets {
   updated_at datetime
 }
 
-Table ticket_activities {
+Table technical_activities {
+  // Actividades realizadas en tickets de servicio
   id int [pk, increment]
-  ticket_id int [ref: > tickets.id]
+  ticket_id int [ref: > technical_tickets.id]
   description text
   date date
   created_at datetime
 }
 
-Table ticket_parts {
+Table technical_parts {
+  // Refacciones utilizadas en tickets de servicio
   id int [pk, increment]
-  ticket_id int [ref: > tickets.id]
-  product_id int [ref: > products.id]
+  ticket_id int [ref: > technical_tickets.id]
+  product_id int [ref: > inventory_products.id]
   quantity int
   created_at datetime
 }
 
 Table inventory_movements {
+  // Movimientos de inventario con trazabilidad completa
+  // Cada movimiento debe estar asociado a un documento de origen
   id int [pk, increment]
-  product_id int [ref: > products.id]
-  warehouse_id int [ref: > warehouses.id]
+  product_id int [ref: > inventory_products.id]
+  warehouse_id int [ref: > inventory_warehouses.id]
   type varchar
   quantity int
   date date
@@ -182,7 +239,12 @@ Table inventory_movements {
   updated_at datetime
 }
 
-Table invoices {
+// ====================================
+// CONTEXTO: GESTIÓN FINANCIERA
+// ====================================
+
+Table financial_invoices {
+  // Facturas XML importadas (emitidas y recibidas)
   id int [pk, increment]
   type varchar
   date date
@@ -194,7 +256,8 @@ Table invoices {
   updated_at datetime
 }
 
-Table accounts_receivable {
+Table financial_receivables {
+  // Cuentas por cobrar de clientes
   id int [pk, increment]
   source_type varchar
   source_id int
@@ -205,9 +268,10 @@ Table accounts_receivable {
   updated_at datetime
 }
 
-Table accounts_payable {
+Table financial_payables {
+  // Cuentas por pagar a proveedores
   id int [pk, increment]
-  purchase_id int [ref: > purchases.id]
+  purchase_id int [ref: > purchase_purchases.id]
   amount decimal
   balance decimal
   due_date date
@@ -215,18 +279,20 @@ Table accounts_payable {
   updated_at datetime
 }
 
-Table payments {
+Table financial_payments {
+  // Pagos registrados (cobros a clientes y pagos a proveedores)
   id int [pk, increment]
   type varchar
   amount decimal
   date date
-  account_receivable_id int [ref: > accounts_receivable.id]
-  account_payable_id int [ref: > accounts_payable.id]
-  bank_movement_id int [ref: > bank_movements.id]
+  account_receivable_id int [ref: > financial_receivables.id]
+  account_payable_id int [ref: > financial_payables.id]
+  bank_movement_id int [ref: > financial_bank_movements.id]
   created_at datetime
 }
 
-Table bank_movements {
+Table financial_bank_movements {
+  // Movimientos bancarios para conciliación
   id int [pk, increment]
   date date
   description varchar
@@ -236,7 +302,8 @@ Table bank_movements {
   created_at datetime
 }
 
-Table reconciliation_processes {
+Table financial_reconciliation_processes {
+  // Procesos de conciliación mensual integral
   id int [pk, increment]
   period varchar
   start_date date
@@ -245,24 +312,30 @@ Table reconciliation_processes {
   created_at datetime
 }
 
-Table reconciliation_items {
+Table financial_reconciliation_items {
+  // Ítems individuales dentro de procesos de conciliación
   id int [pk, increment]
-  reconciliation_process_id int [ref: > reconciliation_processes.id]
+  reconciliation_process_id int [ref: > financial_reconciliation_processes.id]
   type varchar
   record_id int
-  bank_movement_id int [ref: > bank_movements.id]
+  bank_movement_id int [ref: > financial_bank_movements.id]
   status varchar
   notes text
   created_at datetime
 }
 
-// Relaciones adicionales para la conciliación
-Ref: invoices.related_id - sales.id
-Ref: invoices.related_id - purchases.id
-Ref: accounts_receivable.source_id - sales.id
-Ref: accounts_receivable.source_id - contracts.id
-Ref: inventory_movements.related_document_id - sales.id
-Ref: inventory_movements.related_document_id - purchases.id
-Ref: inventory_movements.related_document_id - tickets.id
+// ==============================
+// RELACIONES DE TRAZABILIDAD
+// ==============================
 
-Ref: "contracts"."id" < "contracts"."start_date"
+// Relaciones para conciliación y trazabilidad integral
+Ref: financial_invoices.related_id - sales_sales.id          // Facturas relacionadas con ventas
+Ref: financial_invoices.related_id - purchase_purchases.id      // Facturas relacionadas con compras
+Ref: financial_receivables.source_id - sales_sales.id // Cuentas por cobrar de ventas
+Ref: financial_receivables.source_id - contract_contracts.id // Cuentas por cobrar de contratos
+Ref: inventory_movements.related_document_id - sales_sales.id // Movimientos de inventario por ventas
+Ref: inventory_movements.related_document_id - purchase_purchases.id // Movimientos de inventario por compras
+Ref: inventory_movements.related_document_id - technical_tickets.id // Movimientos de inventario por servicio técnico
+
+// Validación de integridad de fechas en contratos
+Ref: "contract_contracts"."id" < "contract_contracts"."start_date"

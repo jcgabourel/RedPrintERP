@@ -52,7 +52,7 @@ El ERP RedPrint será un sistema modular que centraliza y automatiza operaciones
 - **Módulo de Ventas:** Proceso ágil de ventas directas y cotizaciones, con gestión de estatus e impacto automático en inventario.
 - **Módulo de Compras y Proveedores:** Registro ágil de compras, gestión de proveedores y control de inventario mediante recepción de mercancía e importación de facturas XML.
 - **Módulo de Servicio Técnico:** Registro de actividades, incidencias, control de insumos y calendario servicios.
-- **Módulo de Contabilidad:** Gestión centralizada de cuentas por cobrar y por pagar, conciliación bancaria e importación de facturas XML para compras y ventas.
+- **Módulo de Gestión Financiera:** Gestión integral de finanzas, contabilidad, cuentas por cobrar/pagar, conciliación bancaria e importación de facturas XML. Incluye procesos de conciliación integral mensual.
 - **Módulo de Reportes y Dashboard:** KPIs, rentabilidad, inventario, ventas y cuentas por cobrar.
 - **Proceso de Conciliación Integral:** Funcionalidad para realizar una conciliación mensual total que abarque bancos, facturas, inventario y movimientos financieros, permitiendo regularizar pendientes.
 
@@ -140,7 +140,7 @@ El ERP RedPrint será un sistema modular que centraliza y automatiza operaciones
 - Programación de mantenimientos preventivos.
 - Control de Insumos: El consumo de refacciones y consumibles registrado en un ticket debe descontarse automáticamente del inventario, vinculando inequívocamente el ticket con el movimiento de salida correspondiente.
 
-### 5.7. Módulo de Contabilidad
+### 5.7. Módulo de Gestión Financiera
 
 - Cuentas por Cobrar: Gestión centralizada de saldos pendientes de clientes (originados en Rentas y Ventas). Registro de pagos y aplicación a saldos.
 - Cuentas por Pagar: Registro y seguimiento de facturas pendientes de pago a proveedores (originadas en Compras).
@@ -150,7 +150,7 @@ El ERP RedPrint será un sistema modular que centraliza y automatiza operaciones
   - Facturas emitidas (ventas/rentas)
 - Registro de Pagos: Funcionalidad para registrar pagos recibidos de clientes (abonando a sus cuentas por cobrar) y pagos realizados a proveedores (para cerrar sus facturas en cuentas por pagar).
 - Reportes Financieros: Estado de cuentas, flujo de caja, reporte de antigüedad de saldos.
-- Conciliación Integral: Soporte para un proceso de conciliación mensual total que permita cargar estados de cuenta bancarios, facturas XML generadas y recibidas, y regularizar movimientos de inventario pendientes, así como pagos o cobros no registrados.            
+- **Conciliación Integral:** Proceso mensual de cierre que incluye conciliación bancaria, de facturas (XML generadas/recibidas), inventario y movimientos financieros. Permite regularizar discrepancias y asegurar la integridad de datos en todos los módulos.
 
 ### 5.8. Módulo de Reportes y Dashboard
 
