@@ -84,7 +84,7 @@ El ERP RedPrint será un sistema modular que centraliza y automatiza operaciones
   - Historial de facturas emitidas
   - Estado de cuentas por cobrar
   - Contratos de renta activos e históricos
-  - Órdenes de venta directa
+  - Historial de ventas
   - Tickets de servicio técnico
 - Búsqueda y filtros por nombre, RFC o estado.
 
@@ -106,6 +106,7 @@ El ERP RedPrint será un sistema modular que centraliza y automatiza operaciones
   - Actualización automática al marcar como "Entregada".
   - Opción de vincular a una entrada de inventario manual previa.
 - Importación de XML: Carga de facturas XML para asociar a ventas
+  > Nota: La generación física del CFDI se realiza en un sistema externo (PAC). Este ERP se integra importando el XML resultante para conciliar y registrar la transacción como facturada.
 - Registrar cuentas por cobrar.
 
 ### 5.5. Módulo de Compras y Proveedores
@@ -117,6 +118,7 @@ El ERP RedPrint será un sistema modular que centraliza y automatiza operaciones
   - Actualización automática al marcar como "Recibida".
   - Opción de vincular a una entrada de inventario manual previa.
 - Importación de XML: Carga de facturas XML para asociar a compras
+  > Nota: La generación física del CFDI se realiza en un sistema externo (PAC). Este ERP se integra importando el XML resultante para conciliar y registrar la transacción como facturada.
 - Registrar cuentas por pagar.
 
 ### 5.6. Módulo de Servicio Técnico
