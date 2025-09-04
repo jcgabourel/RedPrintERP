@@ -142,6 +142,7 @@ El ERP RedPrint será un sistema modular que centraliza y automatiza operaciones
 - Importación de XML:
   - Facturas de compra (proveedores)
   - Facturas emitidas (ventas/rentas)
+- Registro de Pagos: Funcionalidad para registrar pagos recibidos de clientes (abonando a sus cuentas por cobrar) y pagos realizados a proveedores (para cerrar sus facturas en cuentas por pagar).
 - Reportes Financieros: Estado de cuentas, flujo de caja, reporte de antigüedad de saldos.
 
 ### 5.8. Módulo de Reportes y Dashboard
