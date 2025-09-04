@@ -189,7 +189,6 @@ El ERP RedPrint será un sistema modular que centraliza y automatiza operaciones
 
 ### 7.2. Proceso de Venta Directa
 
-
 1. Vendedor crea una venta directa (opcionalmente puede generar una cotización primero).
 2. Sistema verifica disponibilidad en tiempo real.
 3. Al confirmar la venta, se genera el movimiento de venta y se descuenta el inventario.
@@ -208,14 +207,14 @@ El ERP RedPrint será un sistema modular que centraliza y automatiza operaciones
 
 ### 7.4. Proceso de Conciliación Mensual Total
 
-1 El responsable de conciliación inicia el proceso de cierre mensual.
-2 Carga de Documentos:
-           - Importa el estado de cuenta bancario (formato CSV/OFX).
-           - Importa facturas XML generadas (ventas/rentas) y recibidas (compras) pendientes de registrar.
-3 Conciliación Bancaria:
-           - El sistema sugiere emparejamientos automáticos entre movimientos bancarios y registros internos de pagos/cobros.
-           - El usuario revisa, confirma o corrige los emparejamientos.
-4  Conciliación de Facturas:
+El responsable de conciliación inicia el proceso de cierre mensual.
+Carga de Documentos:
+  Importa el estado de cuenta bancario (formato CSV/OFX).
+  Importa facturas XML generadas (ventas/rentas) y recibidas (compras) pendientes de registrar.
+Conciliación Bancaria:
+  El sistema sugiere emparejamientos automáticos entre movimientos bancarios y registros internos de pagos/cobros.
+  El usuario revisa, confirma o corrige los emparejamientos.
+Conciliación de Facturas:
            - El sistema identifica facturas XML sin registrar y permite asociarlas a sus documentos de origen (ventas/compras) o crearlos si no existen.
 5 Conciliación de Inventario:
            - El sistema compara los movimientos de inventario registrados con los documentos de compra, venta y servicio técnico.
