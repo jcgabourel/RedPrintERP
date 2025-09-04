@@ -174,13 +174,12 @@ El ERP RedPrint será un sistema modular que centraliza y automatiza operaciones
 
 ### 7.2. Proceso de Venta Directa
 
-1. Vendedor crea cotización, agrega productos del inventario.
+
+1. Vendedor crea una venta directa (opcionalmente puede generar una cotización primero).
 2. Sistema verifica disponibilidad en tiempo real.
-3. Vendedor envía cotización en PDF.
-4. Cliente aprueba cotización.
-5. Vendedor convierte cotización en orden de venta.
-6. Administrador genera factura.
-7. Almacén prepara pedido y descuenta stock.
+3. Al confirmar la venta, se genera el movimiento de venta y se descuenta el inventario.
+4. Administrador genera factura (o importa XML facturado).
+5. Sistema registra automáticamente la cuenta por cobrar.
 
 ### 7.3. Atención de Ticket de Servicio Técnico
 
