@@ -1,0 +1,268 @@
+
+Table customers {
+  id int [pk, increment]
+  name varchar
+  rfc varchar
+  address text
+  phone varchar
+  email varchar
+  created_at datetime
+  updated_at datetime
+}
+
+Table suppliers {
+  id int [pk, increment]
+  name varchar
+  rfc varchar
+  address text
+  phone varchar
+  email varchar
+  created_at datetime
+  updated_at datetime
+}
+
+Table categories {
+  id int [pk, increment]
+  name varchar
+}
+
+Table brands {
+  id int [pk, increment]
+  name varchar
+}
+
+Table units {
+  id int [pk, increment]
+  name varchar
+}
+
+Table products {
+  id int [pk, increment]
+  sku varchar
+  serial_number varchar
+  description text
+  cost decimal
+  price decimal
+  min_stock int
+  category_id int [ref: > categories.id]
+  brand_id int [ref: > brands.id]
+  unit_id int [ref: > units.id]
+  created_at datetime
+  updated_at datetime
+}
+
+Table warehouses {
+  id int [pk, increment]
+  name varchar
+  location varchar
+  type varchar
+  created_at datetime
+}
+
+Table contracts {
+  id int [pk, increment]
+  customer_id int [ref: > customers.id]
+  start_date date
+  end_date date
+  billing_period varchar
+  base_rent decimal
+  included_pages int
+  overcost_per_page decimal
+  status varchar
+  created_at datetime
+  updated_at datetime
+}
+
+Table contract_equipments {
+  id int [pk, increment]
+  contract_id int [ref: > contracts.id]
+  product_id int [ref: > products.id]
+  created_at datetime
+}
+
+Table meter_readings {
+  id int [pk, increment]
+  contract_id int [ref: > contracts.id]
+  reading_date date
+  reading_value int
+  period varchar
+  created_at datetime
+}
+
+Table quotations {
+  id int [pk, increment]
+  customer_id int [ref: > customers.id]
+  date date
+  total decimal
+  status varchar
+  pdf_path varchar
+  created_at datetime
+  updated_at datetime
+}
+
+Table sales {
+  id int [pk, increment]
+  customer_id int [ref: > customers.id]
+  date date
+  total decimal
+  status varchar
+  created_at datetime
+  updated_at datetime
+}
+
+Table sale_items {
+  id int [pk, increment]
+  sale_id int [ref: > sales.id]
+  product_id int [ref: > products.id]
+  quantity int
+  price decimal
+  created_at datetime
+}
+
+Table purchases {
+  id int [pk, increment]
+  supplier_id int [ref: > suppliers.id]
+  date date
+  total decimal
+  status varchar
+  created_at datetime
+  updated_at datetime
+}
+
+Table purchase_items {
+  id int [pk, increment]
+  purchase_id int [ref: > purchases.id]
+  product_id int [ref: > products.id]
+  quantity int
+  cost decimal
+  created_at datetime
+}
+
+Table tickets {
+  id int [pk, increment]
+  customer_id int [ref: > customers.id]
+  contract_id int [ref: > contracts.id]
+  creation_date date
+  close_date date
+  status varchar
+  diagnosis text
+  actions text
+  time_spent int
+  digital_signature text
+  created_at datetime
+  updated_at datetime
+}
+
+Table ticket_activities {
+  id int [pk, increment]
+  ticket_id int [ref: > tickets.id]
+  description text
+  date date
+  created_at datetime
+}
+
+Table ticket_parts {
+  id int [pk, increment]
+  ticket_id int [ref: > tickets.id]
+  product_id int [ref: > products.id]
+  quantity int
+  created_at datetime
+}
+
+Table inventory_movements {
+  id int [pk, increment]
+  product_id int [ref: > products.id]
+  warehouse_id int [ref: > warehouses.id]
+  type varchar
+  quantity int
+  date date
+  related_document_type varchar
+  related_document_id int
+  created_at datetime
+  updated_at datetime
+}
+
+Table invoices {
+  id int [pk, increment]
+  type varchar
+  date date
+  total decimal
+  xml_path varchar
+  status varchar
+  related_id int
+  created_at datetime
+  updated_at datetime
+}
+
+Table accounts_receivable {
+  id int [pk, increment]
+  source_type varchar
+  source_id int
+  amount decimal
+  balance decimal
+  due_date date
+  created_at datetime
+  updated_at datetime
+}
+
+Table accounts_payable {
+  id int [pk, increment]
+  purchase_id int [ref: > purchases.id]
+  amount decimal
+  balance decimal
+  due_date date
+  created_at datetime
+  updated_at datetime
+}
+
+Table payments {
+  id int [pk, increment]
+  type varchar
+  amount decimal
+  date date
+  account_receivable_id int [ref: > accounts_receivable.id]
+  account_payable_id int [ref: > accounts_payable.id]
+  bank_movement_id int [ref: > bank_movements.id]
+  created_at datetime
+}
+
+Table bank_movements {
+  id int [pk, increment]
+  date date
+  description varchar
+  amount decimal
+  type varchar
+  reconciliation_status varchar
+  created_at datetime
+}
+
+Table reconciliation_processes {
+  id int [pk, increment]
+  period varchar
+  start_date date
+  end_date date
+  status varchar
+  created_at datetime
+}
+
+Table reconciliation_items {
+  id int [pk, increment]
+  reconciliation_process_id int [ref: > reconciliation_processes.id]
+  type varchar
+  record_id int
+  bank_movement_id int [ref: > bank_movements.id]
+  status varchar
+  notes text
+  created_at datetime
+}
+
+// Relaciones adicionales para la conciliación
+Ref: invoices.related_id - sales.id
+Ref: invoices.related_id - purchases.id
+Ref: accounts_receivable.source_id - sales.id
+Ref: accounts_receivable.source_id - contracts.id
+Ref: inventory_movements.related_document_id - sales.id
+Ref: inventory_movements.related_document_id - purchases.id
+Ref: inventory_movements.related_document_id - tickets.id
+
+Ref: "contracts"."id" < "contracts"."start_date"
