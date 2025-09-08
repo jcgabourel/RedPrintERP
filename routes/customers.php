@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Src\CustomerManagement\Infrastructure\Http\Controllers\CustomerController;
 
-Route::prefix('api/customers')->group(function () {
+Route::prefix('customers')->group(function () {
     // Get all customers
     Route::get('/', [CustomerController::class, 'index']);
     

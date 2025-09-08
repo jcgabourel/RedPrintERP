@@ -20,3 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // Include customer management routes
 require __DIR__ . '/customers.php';
+
+// Include inventory management routes
+require __DIR__ . '/inventory.php';
