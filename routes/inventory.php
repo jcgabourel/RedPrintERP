@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Src\InventoryManagement\Infrastructure\Http\Controllers\ProductController;
-use Src\InventoryManagement\Infrastructure\Http\Controllers\CategoryController;
-use Src\InventoryManagement\Infrastructure\Http\Controllers\BrandController;
+use App\Http\Controllers\API\CategoryController as ApiCategoryController;
+use App\Http\Controllers\API\BrandController as ApiBrandController;
 use Src\InventoryManagement\Infrastructure\Http\Controllers\WarehouseController;
 use Src\InventoryManagement\Infrastructure\Http\Controllers\StockController;
 
@@ -21,22 +21,26 @@ Route::prefix('inventory')->group(function () {
 
     // Categories Routes
     Route::prefix('categories')->group(function () {
-        Route::get('/', [CategoryController::class, 'index']);
-        Route::get('/{category}', [CategoryController::class, 'show']);
-        Route::post('/', [CategoryController::class, 'store']);
-        Route::put('/{category}', [CategoryController::class, 'update']);
-        Route::delete('/{category}', [CategoryController::class, 'destroy']);
-        Route::get('/{category}/products', [CategoryController::class, 'products']);
+        Route::get('/', [ApiCategoryController::class, 'index']);
+        Route::get('/roots', [ApiCategoryController::class, 'rootCategories']);
+        Route::get('/active', [ApiCategoryController::class, 'active']);
+        Route::get('/with-product-count', [ApiCategoryController::class, 'withProductCount']);
+        Route::get('/{category}', [ApiCategoryController::class, 'show']);
+        Route::post('/', [ApiCategoryController::class, 'store']);
+        Route::put('/{category}', [ApiCategoryController::class, 'update']);
+        Route::delete('/{category}', [ApiCategoryController::class, 'destroy']);
     });
 
     // Brands Routes
     Route::prefix('brands')->group(function () {
-        Route::get('/', [BrandController::class, 'index']);
-        Route::get('/{brand}', [BrandController::class, 'show']);
-        Route::post('/', [BrandController::class, 'store']);
-        Route::put('/{brand}', [BrandController::class, 'update']);
-        Route::delete('/{brand}', [BrandController::class, 'destroy']);
-        Route::get('/{brand}/products', [BrandController::class, 'products']);
+        Route::get('/', [ApiBrandController::class, 'index']);
+        Route::get('/active', [ApiBrandController::class, 'active']);
+        Route::get('/with-contact-info', [ApiBrandController::class, 'withContactInfo']);
+        Route::get('/search', [ApiBrandController::class, 'search']);
+        Route::get('/{brand}', [ApiBrandController::class, 'show']);
+        Route::post('/', [ApiBrandController::class, 'store']);
+        Route::put('/{brand}', [ApiBrandController::class, 'update']);
+        Route::delete('/{brand}', [ApiBrandController::class, 'destroy']);
     });
 
     // Warehouses Routes - Comentado temporalmente

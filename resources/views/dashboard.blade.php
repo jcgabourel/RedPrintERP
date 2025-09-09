@@ -31,7 +31,7 @@
                 </div>
                 <div class="ml-4">
                     <h3 class="text-sm font-medium text-gray-500">Productos</h3>
-                    <p class="text-2xl font-bold text-gray-800">0</p>
+                    <p class="text-2xl font-bold text-gray-800" id="total-products">0</p>
                 </div>
             </div>
         </div>
@@ -72,7 +72,7 @@
                 <span class="text-sm font-medium text-gray-700">Nuevo Cliente</span>
             </a>
 
-            <a href="#" class="flex flex-col items-center p-4 bg-green-50 rounded-lg hover:bg-green-100 transition-colors">
+            <a href="{{ route('inventory.products.create') }}" class="flex flex-col items-center p-4 bg-green-50 rounded-lg hover:bg-green-100 transition-colors">
                 <div class="p-3 bg-green-100 rounded-full mb-3">
                     <i class="fas fa-box-open text-green-500 text-xl"></i>
                 </div>
@@ -108,7 +108,18 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Load product stats
+    async function loadProductStats() {
+        try {
+            const stats = await InventoryAPI.getProductStats();
+            document.getElementById('total-products').textContent = stats.data.total_products || 0;
+        } catch (error) {
+            console.error('Error loading product stats:', error);
+        }
+    }
+
     loadCustomerCount();
+    loadProductStats();
 });
 </script>
 @endsection

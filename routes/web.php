@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\CustomerWebController;
 use App\Http\Controllers\InventoryWebController;
+use App\Http\Controllers\Inventory\CategoryController;
+use App\Http\Controllers\Inventory\BrandController;
 
 Route::get('/', function () {
     return view('dashboard');
@@ -47,16 +49,18 @@ Route::prefix('inventory')->group(function () {
     
     // Categories
     Route::prefix('categories')->group(function () {
-        Route::get('/', [InventoryWebController::class, 'categoriesIndex'])->name('inventory.categories.index');
-        Route::get('/create', [InventoryWebController::class, 'categoriesCreate'])->name('inventory.categories.create');
-        Route::get('/{category}/edit', [InventoryWebController::class, 'categoriesEdit'])->name('inventory.categories.edit');
+        Route::get('/', [CategoryController::class, 'index'])->name('inventory.categories.index');
+        Route::get('/create', [CategoryController::class, 'create'])->name('inventory.categories.create');
+        Route::get('/{category}', [CategoryController::class, 'show'])->name('inventory.categories.show');
+        Route::get('/{category}/edit', [CategoryController::class, 'edit'])->name('inventory.categories.edit');
     });
     
     // Brands
     Route::prefix('brands')->group(function () {
-        Route::get('/', [InventoryWebController::class, 'brandsIndex'])->name('inventory.brands.index');
-        Route::get('/create', [InventoryWebController::class, 'brandsCreate'])->name('inventory.brands.create');
-        Route::get('/{brand}/edit', [InventoryWebController::class, 'brandsEdit'])->name('inventory.brands.edit');
+        Route::get('/', [BrandController::class, 'index'])->name('inventory.brands.index');
+        Route::get('/create', [BrandController::class, 'create'])->name('inventory.brands.create');
+        Route::get('/{brand}', [BrandController::class, 'show'])->name('inventory.brands.show');
+        Route::get('/{brand}/edit', [BrandController::class, 'edit'])->name('inventory.brands.edit');
     });
     
     // Warehouses

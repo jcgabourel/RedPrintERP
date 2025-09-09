@@ -59,10 +59,32 @@
                     <span x-show="!sidebarCollapsed" class="ml-3">Clientes</span>
                 </a>
                 
-                <a href="{{ route('inventory.products.index') }}" class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white">
-                    <i class="fas fa-box w-6"></i>
-                    <span x-show="!sidebarCollapsed" class="ml-3">Inventario</span>
-                </a>
+                <!-- Inventario Dropdown -->
+                <div x-data="{ inventoryOpen: false }" class="relative">
+                    <button @click="inventoryOpen = !inventoryOpen" class="w-full flex items-center justify-between px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white">
+                        <div class="flex items-center">
+                            <i class="fas fa-box w-6"></i>
+                            <span x-show="!sidebarCollapsed" class="ml-3">Inventario</span>
+                        </div>
+                        <i :class="inventoryOpen ? 'fas fa-chevron-up' : 'fas fa-chevron-down'" x-show="!sidebarCollapsed" class="ml-2 text-sm"></i>
+                    </button>
+                    
+                    <!-- Submenu -->
+                    <div x-show="inventoryOpen && !sidebarCollapsed" class="bg-gray-900 ml-6 mt-1 rounded-md overflow-hidden">
+                        <a href="{{ route('inventory.products.index') }}" class="flex items-center px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white text-sm">
+                            <i class="fas fa-cube w-4 mr-2"></i>
+                            Productos
+                        </a>
+                        <a href="{{ route('inventory.categories.index') }}" class="flex items-center px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white text-sm">
+                            <i class="fas fa-tags w-4 mr-2"></i>
+                            Categorías
+                        </a>
+                        <a href="{{ route('inventory.brands.index') }}" class="flex items-center px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white text-sm">
+                            <i class="fas fa-copyright w-4 mr-2"></i>
+                            Marcas
+                        </a>
+                    </div>
+                </div>
                 
                 <a href="#" class="flex items-center px-4 py-3 text-gray-300 hover:bg-gray-700 hover:text-white">
                     <i class="fas fa-shopping-cart w-6"></i>
